@@ -35,7 +35,7 @@ const LOADING_STEPS = [
 ];
 
 export default function App() {
-  const [repoUrl, setRepoUrl] = useState("https://github.com/amurlaniakea/your-repo");
+  const [repoUrl, setRepoUrl] = useState("");
   const [githubToken, setGithubToken] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -96,24 +96,8 @@ export default function App() {
 
   // Perform initial default analysis on first mount
   useEffect(() => {
-    // We trigger the default analysis for the user so they see the result immediately!
-    const triggerInitial = async () => {
-      setIsAnalyzing(true);
-      try {
-        const response = await fetch("/api/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ repoUrl: "https://github.com/amurlaniakea/your-repo" })
-        });
-        const data = await response.json();
-        if (response.ok) setResult(data);
-      } catch (e) {
-        console.error("Initial load failed", e);
-      } finally {
-        setIsAnalyzing(false);
-      }
-    };
-    triggerInitial();
+    // Note: We no longer trigger a default analysis on mount to avoid 
+    // unintended API calls or confusing the user with fake data.
   }, []);
 
   return (
@@ -142,12 +126,12 @@ export default function App() {
 
           <div className="flex items-center gap-2">
             <a 
-              href="https://github.com/amurlaniakea/your-repo"
+              href="https://github.com/amurlaniakea"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors bg-zinc-900 border border-zinc-800 px-3.5 py-2 rounded-lg"
             >
-              <Github className="w-4 h-4" /> Repo Original
+              <Github className="w-4 h-4" /> My Profile
             </a>
           </div>
         </header>
@@ -232,14 +216,7 @@ export default function App() {
           {/* Quick links / Suggestions */}
           <div className="flex items-center gap-2 text-xs text-zinc-500">
             <span>Sugerencia:</span>
-            <button 
-              onClick={() => {
-                setRepoUrl("https://github.com/amurlaniakea/your-repo");
-              }}
-              className="text-emerald-400/80 hover:text-emerald-400 underline font-mono transition-colors"
-            >
-              amurlaniakea/your-repo
-            </button>
+            <span className="text-zinc-600 italic">Introduce el usuario/repo de tu elección</span>
           </div>
         </div>
 
