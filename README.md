@@ -1,12 +1,8 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
-# remix-github-repo-evaluator
+# github-repo-evaluator
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.txt)
 
-**GitHub Repository Evaluator** — A React/TypeScript application for evaluating GitHub repositories, exported from Google AI Studio.
+**GitHub Repository Evaluator** — A React/TypeScript application for evaluating GitHub repositories.
 
 ## Features
 
