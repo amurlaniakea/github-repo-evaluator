@@ -35,7 +35,7 @@ const LOADING_STEPS = [
 ];
 
 export default function App() {
-  const [repoUrl, setRepoUrl] = useState("https://github.com/amurlaniakea/hermes-crew-hybrid");
+  const [repoUrl, setRepoUrl] = useState("https://github.com/amurlaniakea/your-repo");
   const [githubToken, setGithubToken] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -103,7 +103,7 @@ export default function App() {
         const response = await fetch("/api/analyze", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ repoUrl: "https://github.com/amurlaniakea/hermes-crew-hybrid" })
+          body: JSON.stringify({ repoUrl: "https://github.com/amurlaniakea/your-repo" })
         });
         const data = await response.json();
         if (response.ok) setResult(data);
@@ -142,7 +142,7 @@ export default function App() {
 
           <div className="flex items-center gap-2">
             <a 
-              href="https://github.com/amurlaniakea/hermes-crew-hybrid"
+              href="https://github.com/amurlaniakea/your-repo"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors bg-zinc-900 border border-zinc-800 px-3.5 py-2 rounded-lg"
@@ -234,11 +234,11 @@ export default function App() {
             <span>Sugerencia:</span>
             <button 
               onClick={() => {
-                setRepoUrl("https://github.com/amurlaniakea/hermes-crew-hybrid");
+                setRepoUrl("https://github.com/amurlaniakea/your-repo");
               }}
               className="text-emerald-400/80 hover:text-emerald-400 underline font-mono transition-colors"
             >
-              amurlaniakea/hermes-crew-hybrid
+              amurlaniakea/your-repo
             </button>
           </div>
         </div>
